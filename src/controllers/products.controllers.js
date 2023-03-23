@@ -10,7 +10,7 @@ const receiveAllProducts = async (_req, res) => {
 const receiveProductById = async (req, res) => {
   const { id } = req.params;
   const { message } = await productsServices.getProductById(+id);
-  return res.status(STATUS_OK).json(message);
+  return res.status(STATUS_OK).json({ message });
 };
 
 module.exports = {
