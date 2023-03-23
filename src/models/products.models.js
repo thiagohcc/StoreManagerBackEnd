@@ -5,6 +5,15 @@ const findAllProducts = async () => {
   return data;
 };
 
+const findProductById = async (id) => {
+  const [data] = await connection.execute(
+    'SELECT * FROM StoreManager.products WHERE id = ?',
+    [id],
+  );
+  return data;
+};
+
 module.exports = {
   findAllProducts,
+  findProductById,
 };
