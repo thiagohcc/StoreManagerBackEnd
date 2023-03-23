@@ -8,6 +8,7 @@ const getAllProducts = async () => {
 
 const getProductById = async (id) => {
   const product = await productsModels.findProductById(id);
+  console.log(product);
   if (product.length === 0) {
     return { type: null, message: 'Product not found' };
   } 
