@@ -14,7 +14,14 @@ const getProductById = async (id) => {
     return { type: null, message: product };
 };
 
+const postNewProduct = async (name) => {
+  const newProductSaved = productsModels.saveNewProduct(name);
+  console.log(newProductSaved);
+  return { type: null, message: newProductSaved };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
+  postNewProduct,
 };
