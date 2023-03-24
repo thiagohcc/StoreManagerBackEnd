@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "_id": "bf6ec395-d9ce-4b2f-a6a1-1925cfabe31d",
+    "colName": "Products",
+    "created": "2023-03-24T01:16:49.182Z",
+    "sortNum": 10000,
+    "folders": []
+  },
+  {
+    "_id": "9fc9d4eb-9a0f-4b67-af4a-01954c27552a",
+    "colName": "Sales",
+    "created": "2023-03-24T01:17:48.327Z",
+    "sortNum": 20000,
+    "folders": []
+  }
+]
