@@ -11,7 +11,6 @@ const productValidate = (req, res, next) => {
     return res.status(STATUS_UNPROCESSABLE_CONTENT)
       .json({ message: '"name" length must be at least 5 characters long' });
   }
-  console.log('Passou no validador');
   next();
 };
 

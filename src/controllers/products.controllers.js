@@ -20,7 +20,6 @@ const receiveProductById = async (req, res) => {
 
 const createNewProduct = async (req, res) => {
   const data = req.body;
-  console.log(data.name, 'oi');
   const { message } = await productsServices.postNewProduct(data.name);
   return res.status(STATUS_CREATED).json(message);
 };
