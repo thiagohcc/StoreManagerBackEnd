@@ -1,7 +1,8 @@
 const productsServices = require('../services/products.services');
 
 const STATUS_OK = 200;
-const NOT_FOUND = 404;
+const STATUS_CREATED = 201;
+const STATUS_NOT_FOUND = 404;
 
 const receiveAllProducts = async (_req, res) => {
   const { message } = await productsServices.getAllProducts();
@@ -12,15 +13,16 @@ const receiveProductById = async (req, res) => {
   const { id } = req.params;
   const { message } = await productsServices.getProductById(+id);
   if (!message[0].id) {
-    return res.status(NOT_FOUND).json({ message });
+    return res.status(STATUS_NOT_FOUND).json({ message });
   }
   return res.status(STATUS_OK).json(message[0]);
 };
 
 const createNewProduct = async (req, res) => {
   const data = req.body;
+  console.log(data.name, 'oi');
   const { message } = await productsServices.postNewProduct(data.name);
-  return res.status().json(message[0]);
+  return res.status(STATUS_CREATED).json(message);
 };
 
 module.exports = {

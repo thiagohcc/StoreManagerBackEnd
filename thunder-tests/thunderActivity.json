@@ -26,5 +26,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "fbf73145-c263-4258-995b-469287d67738",
+    "colId": "history",
+    "containerId": "",
+    "name": "PostNew",
+    "url": "localhost:3001/products",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-22T20:47:52.580Z",
+    "modified": "2023-03-24T00:01:49.505Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"ProdutoX\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
