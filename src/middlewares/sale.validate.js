@@ -1,6 +1,6 @@
 const STATUS_BAD_REQUEST = 400;
 const STATUS_UNPROCESSABLE_CONTENT = 422;
-const STATUS_NOT_FOUND = 404;
+// const STATUS_NOT_FOUND = 404;
 
 const validateSale = async (req, res, next) => {
   const sale = req.body;
