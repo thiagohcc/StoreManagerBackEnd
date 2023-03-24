@@ -45,5 +45,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "c28c702d-e61e-446b-a04c-f63162a3dfd5",
+    "colId": "9fc9d4eb-9a0f-4b67-af4a-01954c27552a",
+    "containerId": "",
+    "name": "Post New Sale",
+    "url": "localhost:3001/sales",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-03-24T01:28:30.704Z",
+    "modified": "2023-03-24T01:29:35.592Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
+      "form": []
+    },
+    "tests": []
   }
 ]
