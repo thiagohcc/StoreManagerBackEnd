@@ -1,6 +1,7 @@
 const productsServices = require('../services/products.services');
 
 const STATUS_OK = 200;
+const STATUS_NO_CONTENT = 204;
 const STATUS_CREATED = 201;
 const STATUS_NOT_FOUND = 404;
 
@@ -34,9 +35,19 @@ const editProductById = async (req, res) => {
   return res.status(STATUS_OK).json(message);
 };
 
+const removeProductById = async (req, res) => {
+  const { id } = req.params;
+  const { message } = await productsServices.getProductToDelete(+id);
+  if (!message) {
+    return res.status(STATUS_NO_CONTENT).end();
+  }
+  return res.status(STATUS_NOT_FOUND).json({ message });
+};
+
 module.exports = {
   receiveAllProducts,
   receiveProductById,
   createNewProduct,
   editProductById,
+  removeProductById,
 };

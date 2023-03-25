@@ -32,9 +32,19 @@ const saveEditedProduct = async (id, name) => {
   return data;
 };
 
+const deleteProductById = async (id) => {
+  const [data] = await connection.execute(
+    `DELETE FROM ${PRODUCT_TABLE}
+    WHERE id = ?`,
+    [id],
+  );
+  return data;
+};
+
 module.exports = {
   findAllProducts,
   findProductById,
   saveNewProduct,
   saveEditedProduct,
+  deleteProductById,
 };
