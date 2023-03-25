@@ -12,7 +12,8 @@ const findAllSales = async () => {
       sp.quantity
     FROM ${SALES_TABLE} AS s
     INNER JOIN ${SALES_PRODUCTS_TABLE} AS sp
-    ON s.id = sp.sale_id`,
+    ON s.id = sp.sale_id
+    ORDER BY sp.sale_id, sp.product_id`,
   );
   return data;
 };
@@ -26,8 +27,10 @@ const findSaleById = async (id) => {
     FROM ${SALES_TABLE} AS s
     INNER JOIN ${SALES_PRODUCTS_TABLE} AS sp
     ON s.id = sp.sale_id
-    WHERE id = ?`,
+    WHERE id = ?
+    ORDER BY sp.sale_id, sp.product_id`,
     [id],
+
   );
   return data;
 };
