@@ -12,7 +12,6 @@ const receiveAllSales = async (_req, res) => {
 const receiveSaleById = async (req, res) => {
   const { id } = req.params;
   const { message } = await salesServices.getSaleById(+id);
-  console.log(message);
   if (!message[0].date) {
     return res.status(STATUS_NOT_FOUND).json({ message });
   }
