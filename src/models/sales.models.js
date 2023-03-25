@@ -6,9 +6,9 @@ const SALES_PRODUCTS_TABLE = 'StoreManager.sales_products';
 const findAllSales = async () => {
   const [data] = await connection.execute(
     `SELECT
-      s.id,
+      s.id saleId,
       s.date,
-      sp.product_id,
+      sp.product_id productId,
       sp.quantity
     FROM ${SALES_TABLE} AS s
     INNER JOIN ${SALES_PRODUCTS_TABLE} AS sp
