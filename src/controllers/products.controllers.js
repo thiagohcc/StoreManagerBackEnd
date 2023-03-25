@@ -27,7 +27,6 @@ const createNewProduct = async (req, res) => {
 const editProductById = async (req, res) => {
   const { name } = req.body;
   const { id } = req.params;
-  console.log(id);
   const { message } = await productsServices.getproductToEdit(id, name);
   if (!message.name) {
     return res.status(STATUS_NOT_FOUND).json({ message });

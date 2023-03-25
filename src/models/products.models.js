@@ -29,7 +29,6 @@ const saveEditedProduct = async (id, name) => {
     SET name = ?
     WHERE id = ?`, [name, id],
   );
-  console.log(data, name, id);
   return data;
 };
 
