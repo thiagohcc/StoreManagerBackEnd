@@ -20,8 +20,17 @@ const postNewProduct = async (name) => {
   return { type: null, message: savedProduct };
 };
 
+const getproductToEdit = async (id, name) => {
+  const { affectedRows } = await productsModels.saveEditedProduct(id, name);
+  if (!affectedRows) {
+    return { type: null, message: 'Product not found' };
+  }
+  return { type: null, message: { id, name } };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   postNewProduct,
+  getproductToEdit,
 };

@@ -23,8 +23,19 @@ const saveNewProduct = async (name) => {
   return data;
 };
 
+const saveEditedProduct = async (id, name) => {
+  const [data] = await connection.execute(
+    `UPDATE ${PRODUCT_TABLE}
+    SET name = ?
+    WHERE id = ?`, [name, id],
+  );
+  console.log(data, name, id);
+  return data;
+};
+
 module.exports = {
   findAllProducts,
   findProductById,
   saveNewProduct,
+  saveEditedProduct,
 };
