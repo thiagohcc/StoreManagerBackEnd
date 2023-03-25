@@ -5,6 +5,14 @@ const getAllSales = async () => {
   return { type: null, message: sales };
 };
 
+const getSaleById = async (id) => {
+  const sale = await salesModels.findSaleById(id);
+  if (sale.length === 0) {
+    return { type: null, message: 'Sale not found' };
+  }
+  return { type: null, message: sale };
+};
+
 const postNewSale = async (data) => {
   const { insertId } = await salesModels.saveNewSale();
   const newSale = data.map((sale) => salesModels
@@ -23,4 +31,5 @@ const postNewSale = async (data) => {
 module.exports = {
   getAllSales,
   postNewSale,
+  getSaleById,
 };

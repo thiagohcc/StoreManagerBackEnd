@@ -78,5 +78,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "bd492d9e-8323-47a6-b5b6-2bca4c4c1e88",
+    "colId": "9fc9d4eb-9a0f-4b67-af4a-01954c27552a",
+    "containerId": "",
+    "name": "Get Sales by Id",
+    "url": "localhost:3001/sales/7",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-03-25T21:17:29.158Z",
+    "modified": "2023-03-25T21:35:37.132Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

@@ -17,6 +17,21 @@ const findAllSales = async () => {
   return data;
 };
 
+const findSaleById = async (id) => {
+  const [data] = await connection.execute(
+    `SELECT
+      s.date,
+      sp.product_id productId,
+      sp.quantity
+    FROM ${SALES_TABLE} AS s
+    INNER JOIN ${SALES_PRODUCTS_TABLE} AS sp
+    ON s.id = sp.sale_id
+    WHERE id = ?`,
+    [id],
+  );
+  return data;
+};
+
 const saveNewSale = async () => {
   const [data] = await connection.execute(
     `INSERT INTO ${SALES_TABLE} (date) VALUES (now())`,
@@ -35,6 +50,7 @@ const saveNewSaleProduct = async (saleData) => {
 
 module.exports = {
   findAllSales,
+  findSaleById,
   saveNewSale,
   saveNewSaleProduct,
 };
