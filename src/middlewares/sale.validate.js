@@ -32,8 +32,6 @@ const validadeSaleByProductId = async (req, res, next) => {
   const checkProductIdAlreadyExists = productIdsOfsale
     .every((idSales) => idsCadastrados.includes(idSales));
   
-  console.log(checkProductIdAlreadyExists);
-  
   if (!checkProductIdAlreadyExists) {
     return res.status(STATUS_NOT_FOUND).json({ message: 'Product not found' });
   }
