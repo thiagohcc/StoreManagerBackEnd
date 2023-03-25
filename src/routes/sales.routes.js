@@ -1,10 +1,10 @@
 const express = require('express');
 const salesControllers = require('../controllers/sales.controllers');
-const { validateSale } = require('../middlewares/sale.validate');
+const { validateSale, validadeSaleByProductId } = require('../middlewares/sale.validate');
 
 const salesRouter = express.Router();
 
 salesRouter
-  .post('/', validateSale, salesControllers.receiveNewSale);
+  .post('/', validateSale, validadeSaleByProductId, salesControllers.receiveNewSale);
 
 module.exports = salesRouter;

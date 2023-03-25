@@ -1,5 +1,4 @@
 const salesModels = require('../models/sales.models');
-// const productsModels = require('../models/products.models');
 
 const postNewSale = async (data) => {
   const { insertId } = await salesModels.saveNewSale();
