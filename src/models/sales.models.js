@@ -19,7 +19,7 @@ const findAllSales = async () => {
 
 const saveNewSale = async () => {
   const [data] = await connection.execute(
-    `INSERT INTO ${SALES_TABLE} () VALUES ()`,
+    `INSERT INTO ${SALES_TABLE} (date) VALUES (now())`,
   );
   return data;
 };
