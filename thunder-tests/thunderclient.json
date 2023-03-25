@@ -64,5 +64,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "9a88635c-945b-4cbb-9cc7-77792306ca30",
+    "colId": "9fc9d4eb-9a0f-4b67-af4a-01954c27552a",
+    "containerId": "",
+    "name": "Get All Sales",
+    "url": "localhost:3001/sales",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-03-25T20:06:46.705Z",
+    "modified": "2023-03-25T20:07:03.692Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

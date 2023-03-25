@@ -1,7 +1,12 @@
 const salesServices = require('../services/sales.services');
 
+const STATUS_OK = 200;
 const STATUS_CREATED = 201;
-// const STATUS_NOT_FOUND = 404;
+
+const receiveAllSales = async (_req, res) => {
+  const { message } = await salesServices.getAllSales();
+  return res.status(STATUS_OK).json(message);
+};
 
 const receiveNewSale = async (req, res) => {
   const data = req.body;
@@ -10,5 +15,6 @@ const receiveNewSale = async (req, res) => {
 };
 
 module.exports = {
+  receiveAllSales,
   receiveNewSale,
 };

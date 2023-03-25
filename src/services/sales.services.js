@@ -1,5 +1,10 @@
 const salesModels = require('../models/sales.models');
 
+const getAllSales = async () => {
+  const sales = await salesModels.findAllSales();
+  return { type: null, message: sales };
+};
+
 const postNewSale = async (data) => {
   const { insertId } = await salesModels.saveNewSale();
   const newSale = data.map((sale) => salesModels
@@ -16,5 +21,6 @@ const postNewSale = async (data) => {
 };
 
 module.exports = {
+  getAllSales,
   postNewSale,
 };

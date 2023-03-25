@@ -5,6 +5,7 @@ const { validateSale, validadeSaleByProductId } = require('../middlewares/sale.v
 const salesRouter = express.Router();
 
 salesRouter
+  .get('/', salesControllers.receiveAllSales)
   .post('/', validateSale, validadeSaleByProductId, salesControllers.receiveNewSale);
 
 module.exports = salesRouter;
