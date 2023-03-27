@@ -27,30 +27,26 @@ describe('Unit tests in the controller layer for', function () {
       .resolves({ type: null, message: mockProducts });
 
     await productsControllers.receiveAllProducts(req, res);
-
+    
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(mockProducts);
   });
+  
+  it('checks if sending an id by the GET method returns a product correctly', async function () {
+    const req = { params: { id: 3 }};
+    const res = {};
 
-  // it('checks if sending an id by the GET method returns a product correctly', async function () {
-  //   const req = { params: { id: 3 }};
-  //   const res = {};
-
-
-  //   res.status = sinon.stub().returns(res);
-  //   res.json = sinon.stub().returns();
-
-  //   sinon
-  //     .stub(productsServices, 'getProductById')
-  //     .resolves({ type: null, message: mockProductById });
-      
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
     
-  //   await productsControllers.receiveProductById(req, res);
+    sinon
+    .stub(productsServices, 'getProductById')
+    .resolves({ type: null, message: [mockProductById] });
+    
+    await productsControllers.receiveProductById(req, res);
 
-  //   console.log(res);
-
-  //   expect(res.status).to.have.been.calledWith(200);
-  //   expect(res.json).to.have.been.calledWith(mockProductById);
-  // });
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(mockProductById);
+  });
 });
 
