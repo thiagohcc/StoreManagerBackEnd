@@ -29,7 +29,7 @@ const removeSaleById = async (req, res) => {
   const { id } = req.params;
   const { type, message } = await salesServices.getSaleToDelete(+id);
   if (type === 404) {
-    return res.status(STATUS_NOT_FOUND).json(message);
+    return res.status(STATUS_NOT_FOUND).json({ message });
   }
   return res.status(STATUS_NO_CONTENT).end();
 };
