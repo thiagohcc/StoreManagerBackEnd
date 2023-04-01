@@ -27,7 +27,7 @@ const receiveNewSale = async (req, res) => {
 
 const removeSaleById = async (req, res) => {
   const { id } = req.params;
-  const { type, message } = await salesServices(id);
+  const { type, message } = await salesServices.getSaleToDelete(id);
   if (type === 404) {
     return res.status(STATUS_NOT_FOUND).json(message);
   }

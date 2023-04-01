@@ -28,8 +28,17 @@ const postNewSale = async (data) => {
   return { type: null, message: savedSale };
 };
 
+const getSaleToDelete = async (id) => {
+  const { affectedRows } = await salesModels.deleteSaleById(id);
+  if (!affectedRows) {
+    return { type: 404, message: 'Sale not found' };
+  }
+  return { type: null };
+};
+
 module.exports = {
   getAllSales,
   postNewSale,
   getSaleById,
+  getSaleToDelete,
 };

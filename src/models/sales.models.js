@@ -51,9 +51,12 @@ const saveNewSaleProduct = async (saleData) => {
   return data;
 };
 
+const deleteSaleById = async (_id) => { };
+
 module.exports = {
   findAllSales,
   findSaleById,
   saveNewSale,
   saveNewSaleProduct,
+  deleteSaleById,
 };
