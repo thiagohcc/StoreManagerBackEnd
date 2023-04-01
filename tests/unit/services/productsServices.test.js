@@ -15,6 +15,7 @@ const {
   mockReturnToPostNewProduct,
   mockProductToEdit,
   mockReturnToEditProduct,
+  mockProductByQuery,
 } = require('./mock/products.services.mock');
 
 describe('Test the "service" layer of the "/products" route:', function () {
@@ -86,5 +87,29 @@ describe('Test the "service" layer of the "/products" route:', function () {
     const result = await productsServices.getProductToDelete(3);
 
     expect(result.message).to.be.equal('Product not found');
+  });
+
+  it('if it is correctly I receive products searched for by query', async function () {
+    sinon.stub(productsModels, 'getProductsByQuery').resolves(mockProductByQuery);
+
+    const result = await productsServices.getproductByQuery('Martelo');
+
+    expect(result.message).to.be.equal(mockProductByQuery);
+  });
+
+  it('if it is correctly I receive products searched for unmatched queries', async function () {
+    sinon.stub(productsModels, 'getProductsByQuery').resolves([]);
+
+    const result = await productsServices.getproductByQuery('loremipsum');
+
+    expect(result.message).to.be.deep.equal([]);
+  });
+
+  it('if I receive all the products when sending an empty query', async function () {
+    sinon.stub(productsModels, 'getProductsByQuery').resolves(mockProducts);
+
+    const result = await productsServices.getproductByQuery('');
+
+    expect(result.message).to.be.deep.equal(mockProducts);
   });
 });

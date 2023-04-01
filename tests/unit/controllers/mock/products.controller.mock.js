@@ -27,9 +27,17 @@ const mockEditProduct = {
   "name": "Test to edit product"
 };
 
+const mockProductByQuery = [
+  {
+    id: 1,
+    name: "Martelo de Thor",
+  },
+];
+
 module.exports = {
   mockProducts,
   mockProductById,
   mockNewProduct,
   mockEditProduct,
+  mockProductByQuery,
 };

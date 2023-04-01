@@ -13,6 +13,7 @@ const {
   mockProductById,
   mockNewProduct,
   mockEditProduct,
+  mockProductByQuery,
 } = require('./mock/products.controller.mock');
 
 describe('PRODUCTS CONTROLLERS - Unit tests in the controller layer for', function () {
@@ -154,6 +155,40 @@ describe('PRODUCTS CONTROLLERS - Unit tests in the controller layer for', functi
     expect(res.status).to.have.been.calledWith(404);
     expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
 
+  });
+
+  it('whether it is possible to search for products by name', async function () {
+    const req = { query: { q: 'Martelo' } };
+    const res = {};
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon
+    .stub(productsServices, 'getproductByQuery')
+    .resolves({ type: null, message: mockProductByQuery });
+    
+    await productsControllers.receivePorductsByQuery(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(mockProductByQuery);
+  });
+
+  it('whether it is possible to search for products by name without any matches', async function () {
+    const req = { query: { q: 'loromipsum' } };
+    const res = {};
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon
+      .stub(productsServices, 'getproductByQuery')
+      .resolves({ type: null, message: [] });
+
+    await productsControllers.receivePorductsByQuery(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith([]);
   });
 });
 

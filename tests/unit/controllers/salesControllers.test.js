@@ -157,5 +157,4 @@ describe('Tests the "controllers" layer of the "/sales" route:', function () {
     expect(res.status).to.have.been.calledWith(404);
     expect(res.json).to.have.been.calledWith({ message: 'Sale not found' });
   });
-
 });

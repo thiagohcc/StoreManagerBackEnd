@@ -13,6 +13,7 @@ const {
   mockProductNouFound,
   mockNewProduct,
   mockEditedProduct,
+  mockProductByQuery,
 } = require('./mock/products.models.mock');
 
 
@@ -69,4 +70,14 @@ describe('Tests the models layer of the /product route', function () {
     expect(result.affectedRows).to.be.equal(1);
   });
 
+  it('if the database returns the products based on the query sent', async function () {
+    sinon.stub(connection, 'execute').resolves([mockProductByQuery]);
+
+    const result = await productsModels.getProductsByQuery('Martelo');
+
+    expect(result).to.have.length(1);
+    expect(result[0]).to.haveOwnProperty('id');
+    expect(result[0]).to.haveOwnProperty('name');
+    expect(result[0]).to.be.deep.equal(mockProductByQuery[0]);
+  });
 });

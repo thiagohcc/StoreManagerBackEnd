@@ -47,9 +47,12 @@ const mockReturnToEditProduct = {
   changedRows: 0
 };
 
-const mockDeleteProduct = {
-  
-}
+const mockProductByQuery = [
+  {
+    id: 1,
+    name: "Martelo de Thor",
+  },
+];
 
 module.exports = {
   mockProducts,
@@ -59,4 +62,5 @@ module.exports = {
   mockReturnToPostNewProduct,
   mockProductToEdit,
   mockReturnToEditProduct,
+  mockProductByQuery,
 };

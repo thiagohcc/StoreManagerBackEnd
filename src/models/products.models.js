@@ -48,7 +48,6 @@ const getProductsByQuery = async (q) => {
     WHERE name LIKE ?`,
     [query],
   );
-  console.log(data);
   return data;
 };
 

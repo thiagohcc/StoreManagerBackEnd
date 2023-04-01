@@ -46,7 +46,6 @@ const removeProductById = async (req, res) => {
 
 const receivePorductsByQuery = async (req, res) => {
   const { q } = req.query;
-  console.log(typeof q);
   const { message } = await productsServices.getproductByQuery(q);
   return res.status(STATUS_OK).json(message);
 };
