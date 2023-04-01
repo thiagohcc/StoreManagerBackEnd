@@ -84,11 +84,11 @@
     "colId": "9fc9d4eb-9a0f-4b67-af4a-01954c27552a",
     "containerId": "",
     "name": "Get Sales by Id",
-    "url": "localhost:3001/sales/94545",
+    "url": "localhost:3001/sales/3",
     "method": "GET",
     "sortNum": 40000,
     "created": "2023-03-25T21:17:29.158Z",
-    "modified": "2023-04-01T02:45:53.851Z",
+    "modified": "2023-04-01T03:30:59.420Z",
     "headers": [],
     "params": [],
     "tests": []

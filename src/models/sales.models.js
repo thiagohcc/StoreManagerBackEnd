@@ -62,7 +62,6 @@ const deleteSaleById = async (id) => {
     WHERE sale_id = ?`,
     [id],
   );
-  console.log(data);
   return data;
 };
 
