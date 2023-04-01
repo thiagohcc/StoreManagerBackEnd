@@ -6,10 +6,10 @@ const productsRouter = express.Router();
 
 productsRouter
   .get('/', productsControllers.receiveAllProducts)
+  .get('/search', productsControllers.receivePorductsByQuery)
   .get('/:id', productsControllers.receiveProductById)
   .post('/', productValidate, productsControllers.createNewProduct)
   .put('/:id', productValidate, productsControllers.editProductById)
   .delete('/:id', productsControllers.removeProductById);
-  // .get('/search', productsControllers.receivePorductsByQuery);
 
 module.exports = productsRouter;

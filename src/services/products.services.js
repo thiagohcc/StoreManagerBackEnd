@@ -35,10 +35,20 @@ const getProductToDelete = async (id) => {
   return { type: null };
 };
 
+const getproductByQuery = async (q) => {
+  if (q.length === 0) {
+    const products = await productsModels.findAllProducts();
+    return { type: null, message: products };
+  }
+  const products = await productsModels.getProductsByQuery(q);
+  return { type: null, message: products };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   postNewProduct,
   getproductToEdit,
   getProductToDelete,
+  getproductByQuery,
 };

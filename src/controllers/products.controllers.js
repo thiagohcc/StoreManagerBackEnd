@@ -44,10 +44,18 @@ const removeProductById = async (req, res) => {
   return res.status(STATUS_NOT_FOUND).json({ message });
 };
 
+const receivePorductsByQuery = async (req, res) => {
+  const { q } = req.query;
+  console.log(typeof q);
+  const { message } = await productsServices.getproductByQuery(q);
+  return res.status(STATUS_OK).json(message);
+};
+
 module.exports = {
   receiveAllProducts,
   receiveProductById,
   createNewProduct,
   editProductById,
   removeProductById,
+  receivePorductsByQuery,
 };

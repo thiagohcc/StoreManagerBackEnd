@@ -41,10 +41,22 @@ const deleteProductById = async (id) => {
   return data;
 };
 
+const getProductsByQuery = async (q) => {
+  const query = `%${q}%`;
+  const [data] = await connection.execute(
+    `SELECT * FROM ${PRODUCT_TABLE}
+    WHERE name LIKE ?`,
+    [query],
+  );
+  console.log(data);
+  return data;
+};
+
 module.exports = {
   findAllProducts,
   findProductById,
   saveNewProduct,
   saveEditedProduct,
   deleteProductById,
+  getProductsByQuery,
 };
