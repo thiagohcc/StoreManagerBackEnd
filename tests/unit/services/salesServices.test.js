@@ -13,6 +13,8 @@ const {
   mockSaleById,
   mockNewSale,
   mockSaveNewSale,
+  mockSaleToEdit,
+  mockSaleEdited,
 } = require('./mock/sales.services.mock');
 
 describe('tests the services layer of the sales route:', function () {
@@ -51,5 +53,37 @@ describe('tests the services layer of the sales route:', function () {
     const result = await salesServices.postNewSale(mockNewSale);
 
     expect(result.message).to.be.deep.equal(mockSaveNewSale);
+  });
+
+  it('if it is possible to delete a sale through an id', async function () {
+    sinon.stub(salesModels, 'deleteSaleById').resolves({ affectedRows: 1 });
+
+    const result = await salesServices.getSaleToDelete(1);
+
+    expect(result).not.to.be.haveOwnProperty('message');
+  });
+
+  it('if not is possible to delete a sale through an invalid id', async function () {
+    sinon.stub(salesModels, 'deleteSaleById').resolves({ affectedRows: 0 });
+
+    const result = await salesServices.getSaleToDelete(1);
+
+    expect(result.message).to.be.equal('Sale not found');
+  });
+
+  it('if it is possible to edit a sale through an id', async function () {
+    sinon.stub(salesModels, 'editSaleById').resolves({ affectedRows: 1 });
+
+    const result = await salesServices.getSaleToEdit(1, mockSaleToEdit);
+
+    expect(result.message).to.be.deep.equal(mockSaleEdited);
+  });
+
+  it('if not is possible to edit a sale through an invalid id', async function () {
+    sinon.stub(salesModels, 'editSaleById').resolves({ affectedRows: 0 });
+
+    const result = await salesServices.getSaleToEdit(1, mockSaleToEdit);
+
+    expect(result.message).to.be.deep.equal('Sale not found');
   });
 });

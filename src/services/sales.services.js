@@ -45,6 +45,7 @@ const getSaleToEdit = async (id, data) => {
     }));
   
   await Promise.all(updateSalesProducts);
+  await salesModels.deleteSaleProducts(id);
   const updatedSale = { saleId: id, itemsUpdated: data };
   if (!affectedRows) {
     return { type: 404, message: 'Sale not found' };

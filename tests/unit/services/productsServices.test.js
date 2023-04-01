@@ -85,6 +85,6 @@ describe('Test the "service" layer of the "/products" route:', function () {
 
     const result = await productsServices.getProductToDelete(3);
 
-    expect(result.message).not.to.be.haveOwnProperty('Product not found');
+    expect(result.message).to.be.equal('Product not found');
   });
 });

@@ -57,7 +57,11 @@ const deleteSaleById = async (id) => {
     WHERE id = ?`,
     [id],
   );
-  await connection.execute(
+  return data;
+};
+
+const deleteSaleProducts = async (id) => {
+  const [data] = await connection.execute(
     `DELETE FROM ${SALES_PRODUCTS_TABLE}
     WHERE sale_id = ?`,
     [id],
@@ -92,4 +96,5 @@ module.exports = {
   deleteSaleById,
   editSaleById,
   editSaleProduct,
+  deleteSaleProducts,
 };

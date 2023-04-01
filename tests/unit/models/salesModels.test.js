@@ -52,4 +52,28 @@ describe('tests the models layer of the sales route:', function () {
 
     expect(result.affectedRows).to.be.equal(1);
   });
+
+  it('if it is possible to delete a sale through an id in the database', async function () {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+
+    const result = await salesModels.deleteSaleById(123);
+
+    expect(result.affectedRows).to.be.equal(1);
+  });
+
+  it('if not is possible to delete a sale through an invalid id in the database', async function () {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 0 }]);
+
+    const result = await salesModels.deleteSaleById(123);
+
+    expect(result.affectedRows).to.be.equal(0);
+  });
+
+  it('if it is possible to edit a sale from an id', async function () {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+
+    const result = await salesModels.editSaleById(1);
+
+    expect(result.affectedRows).to.be.equal(1);
+  });
 });

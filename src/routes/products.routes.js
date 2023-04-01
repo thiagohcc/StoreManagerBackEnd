@@ -10,5 +10,6 @@ productsRouter
   .post('/', productValidate, productsControllers.createNewProduct)
   .put('/:id', productValidate, productsControllers.editProductById)
   .delete('/:id', productsControllers.removeProductById);
+  // .get('/search', productsControllers.receivePorductsByQuery);
 
 module.exports = productsRouter;
