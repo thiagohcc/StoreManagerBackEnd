@@ -28,10 +28,21 @@ const receiveNewSale = async (req, res) => {
 const removeSaleById = async (req, res) => {
   const { id } = req.params;
   const { type, message } = await salesServices.getSaleToDelete(+id);
-  if (type === 404) {
+  if (type === STATUS_NOT_FOUND) {
     return res.status(STATUS_NOT_FOUND).json({ message });
   }
   return res.status(STATUS_NO_CONTENT).end();
+};
+
+const receiveSaleToEdit = async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  const { type, message } = await salesServices.getSaleToEdit(+id, data);
+  if (type === STATUS_NOT_FOUND) {
+    return res.status(STATUS_NOT_FOUND).json({ message });
+  }
+  return res.status(STATUS_OK).json(message);
 };
 
 module.exports = {
@@ -39,4 +50,5 @@ module.exports = {
   receiveSaleById,
   receiveNewSale,
   removeSaleById,
+  receiveSaleToEdit,
 };

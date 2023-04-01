@@ -36,9 +36,26 @@ const getSaleToDelete = async (id) => {
   return { type: null };
 };
 
+const getSaleToEdit = async (id, data) => {
+  const { affectedRows } = await salesModels.editSaleById(id);
+  const updateSalesProducts = data.map((saleProducts) => salesModels
+    .editSaleProduct(id, {
+      productId: saleProducts.productId,
+      quantity: saleProducts.quantity,
+    }));
+  
+  await Promise.all(updateSalesProducts);
+  const updatedSale = { saleId: id, itemsUpdated: data };
+  if (!affectedRows) {
+    return { type: 404, message: 'Sale not found' };
+  }
+  return ({ type: null, message: updatedSale });
+};
+
 module.exports = {
   getAllSales,
   postNewSale,
   getSaleById,
   getSaleToDelete,
+  getSaleToEdit,
 };

@@ -8,6 +8,7 @@ salesRouter
   .get('/', salesControllers.receiveAllSales)
   .get('/:id', salesControllers.receiveSaleById)
   .post('/', validateSale, validadeSaleByProductId, salesControllers.receiveNewSale)
-  .delete('/:id', salesControllers.removeSaleById);
+  .delete('/:id', salesControllers.removeSaleById)
+  .put('/:id', validateSale, validadeSaleByProductId, salesControllers.receiveSaleToEdit);
 
 module.exports = salesRouter;

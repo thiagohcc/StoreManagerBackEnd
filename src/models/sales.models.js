@@ -65,10 +65,31 @@ const deleteSaleById = async (id) => {
   return data;
 };
 
+const editSaleById = async (id) => {
+  const [data] = await connection.execute(
+    `UPDATE ${SALES_TABLE}
+    SET date = now()
+    WHERE id = ?`,
+    [id],
+  );
+  return data;
+};
+
+const editSaleProduct = async (id, product) => {
+  await connection.execute(
+    `UPDATE ${SALES_PRODUCTS_TABLE}
+    SET quantity = ?
+    WHERE sale_id = ? AND product_id = ?`,
+    [product.quantity, id, product.productId],
+  );
+};
+
 module.exports = {
   findAllSales,
   findSaleById,
   saveNewSale,
   saveNewSaleProduct,
   deleteSaleById,
+  editSaleById,
+  editSaleProduct,
 };

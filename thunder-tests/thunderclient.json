@@ -139,5 +139,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "b4725566-d3c0-4c50-83b6-02d933672ea6",
+    "colId": "9fc9d4eb-9a0f-4b67-af4a-01954c27552a",
+    "containerId": "",
+    "name": "Put Update Sale by Id",
+    "url": "localhost:3001/sales/5",
+    "method": "PUT",
+    "sortNum": 60000,
+    "created": "2023-04-01T04:24:03.647Z",
+    "modified": "2023-04-01T04:33:24.563Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 10\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 50\n  }\n]",
+      "form": []
+    },
+    "tests": []
   }
 ]
