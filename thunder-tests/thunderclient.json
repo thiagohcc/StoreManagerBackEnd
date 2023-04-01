@@ -55,12 +55,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2023-03-24T01:28:30.704Z",
-    "modified": "2023-03-29T00:00:28.087Z",
+    "modified": "2023-04-01T02:11:47.209Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "[\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  },\n  {\n    \"productId\": 1,\n    \"quantity\": 7\n  }\n]",
+      "raw": "[\n  {\n    \"productId\": 6,\n    \"quantity\": 5\n  }\n]",
       "form": []
     },
     "tests": []
@@ -84,11 +84,11 @@
     "colId": "9fc9d4eb-9a0f-4b67-af4a-01954c27552a",
     "containerId": "",
     "name": "Get Sales by Id",
-    "url": "localhost:3001/sales/999",
+    "url": "localhost:3001/sales/94545",
     "method": "GET",
     "sortNum": 40000,
     "created": "2023-03-25T21:17:29.158Z",
-    "modified": "2023-03-28T23:52:09.455Z",
+    "modified": "2023-04-01T02:45:53.851Z",
     "headers": [],
     "params": [],
     "tests": []

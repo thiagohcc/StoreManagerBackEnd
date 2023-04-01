@@ -26,7 +26,7 @@ const mockNewProduct = {
 };
 
 const mockEditedProduct = {
-  id: 999,
+  id: 123,
   name: 'New product test',
 };
 
