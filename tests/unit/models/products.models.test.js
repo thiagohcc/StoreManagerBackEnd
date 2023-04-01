@@ -7,7 +7,13 @@ chai.use(sinonChai);
 
 const connection = require('../../../src/models/connection')
 const productsModels = require('../../../src/models/products.models');
-const { mockProducts, mockProductById, mockProductNouFound } = require('./mock/products.models.mock');
+const {
+  mockProducts,
+  mockProductById,
+  mockProductNouFound,
+  mockNewProduct,
+  mockEditedProduct,
+} = require('./mock/products.models.mock');
 
 
 describe('Tests the models layer of the /product route', function () {
@@ -39,5 +45,28 @@ describe('Tests the models layer of the /product route', function () {
     expect(result).to.have.lengthOf(mockProductNouFound);
   });
 
+  it('whether it is possible to save a new product in the database', async function () {
+    sinon.stub(connection, 'execute').resolves([mockNewProduct]);
+
+    const result = await productsModels.saveNewProduct(mockNewProduct.name);
+
+    expect(result).to.be.deep.equal(mockNewProduct);
+  });
+
+  it('whether it is possible to edit a product', async function () {
+    sinon.stub(connection, 'execute').resolves([mockEditedProduct]);
+
+    const result = await productsModels.saveEditedProduct(mockEditedProduct.id, mockEditedProduct.name);
+
+    expect(result).to.be.deep.equal(mockEditedProduct);
+  });
+
+  it('whether it is possible to delete a product', async function () {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+
+    const result = await productsModels.deleteProductById(123456);
+
+    expect(result.affectedRows).to.be.equal(1);
+  });
 
 });

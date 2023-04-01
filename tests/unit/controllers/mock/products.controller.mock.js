@@ -18,7 +18,18 @@ const mockProductById = {
   "name": "Escudo do Capitão América"
 };
 
+const mockNewProduct = {
+  "name": "Test to creat product"
+};
+
+const mockEditProduct = {
+  "id": 3,
+  "name": "Test to edit product"
+};
+
 module.exports = {
   mockProducts,
   mockProductById,
+  mockNewProduct,
+  mockEditProduct,
 };

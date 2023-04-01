@@ -20,8 +20,20 @@ const mockProductById = {
 
 const mockProductNouFound = [];
 
+const mockNewProduct = {
+  id: 999,
+  name: 'New product test',
+};
+
+const mockEditedProduct = {
+  id: 999,
+  name: 'New product test',
+};
+
 module.exports = {
   mockProducts,
   mockProductById,
   mockProductNouFound,
+  mockNewProduct,
+  mockEditedProduct,
 };
