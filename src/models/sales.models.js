@@ -51,7 +51,20 @@ const saveNewSaleProduct = async (saleData) => {
   return data;
 };
 
-const deleteSaleById = async (_id) => { };
+const deleteSaleById = async (id) => {
+  const [data] = await connection.execute(
+    `DELETE FROM ${SALES_TABLE}
+    WHERE id = ?`,
+    [id],
+  );
+  await connection.execute(
+    `DELETE FROM ${SALES_PRODUCTS_TABLE}
+    WHERE sale_id = ?`,
+    [id],
+  );
+  console.log(data);
+  return data;
+};
 
 module.exports = {
   findAllSales,
